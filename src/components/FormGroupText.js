@@ -20,7 +20,7 @@ export const TextInput = styled.input.attrs((props) => ({
 
   outline: none;
   border: 2px solid ${Colors.darkGray};
-  width: 290px;
+  width: 100%;
   padding: 12px 10px;
   border-radius: 4px;
   font-size: 15px;
@@ -40,12 +40,16 @@ const FormGroupText = ({ label, type, id, placeholder, name }) => (
       type={type}
       placeholder={placeholder}
       name={name}
-      as={TextInput} />
+      as={TextInput}
+    />
     <ErrorMessage
       style={{
         color: Colors.redError,
-        marginTop: '8px'
-      }} name={name} component="div" />
+        marginTop: '8px',
+      }}
+      name={name}
+      component="div"
+    />
   </FormGroupStyled>
 );
 

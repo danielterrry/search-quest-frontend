@@ -15,9 +15,7 @@ const Container = styled.div`
 `;
 
 const CategoryCard = ({ children }) => {
-  return (
-    <Container>{children}</Container>
-  )
+  return <Container>{children}</Container>;
 };
 
 export default CategoryCard;

@@ -1,10 +1,12 @@
 import { styled } from 'styled-components';
 import Colors from '../Colors';
 import breakpoints from '../breakpoints';
-import { ReactComponent as Logo } from '../assets/logo.svg'
-import { NavLink } from 'react-router-dom';
+import { ReactComponent as Logo } from '../assets/logo.svg';
+import { NavLink, useNavigate } from 'react-router-dom';
 import SideNavigation from './SideNavigation';
 import { useState } from 'react';
+import { useAuth } from '../contexts/AuthContext';
+import { logout } from '../api/auth';
 
 const Nav = styled.nav`
   display: flex;
@@ -44,15 +46,38 @@ export const StyledNavLink = styled(NavLink)`
 const Navigation = () => {
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => setIsActive(!isActive);
+  const navigate = useNavigate();
+  const { isAuthenticated, tokens, profile, clearAuth } = useAuth();
 
   return (
-    <Nav className='container'>
+    <Nav className="container">
       <SideNavigation isActive={isActive} onClick={handleClick} />
-      <a href="/" style={{ width: '180px', height: '50px', marginRight: '1.5rem' }}>
+      <a
+        href="/"
+        style={{ width: '180px', height: '50px', marginRight: '1.5rem' }}
+      >
         <Logo />
       </a>
       <NavItems className="nav-items" role="menu">
         <NavItem>
+          {isAuthenticated ? (
+            <>
+              <StyledNavLink
+                to="#"
+                onClick={async () => {
+                  console.log('tokens.refresh.token', tokens.refresh.token);
+                  await logout({ refreshToken: tokens.refresh.token });
+                  clearAuth();
+                  navigate('/');
+                }}
+              >
+                Logout
+              </StyledNavLink>
+              <StyledNavLink to="/dashboard">Home</StyledNavLink>
+            </>
+          ) : (
+            <StyledNavLink to="/login">Login</StyledNavLink>
+          )}
           <StyledNavLink to="/apply">Apply</StyledNavLink>
         </NavItem>
       </NavItems>

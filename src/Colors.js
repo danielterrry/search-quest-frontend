@@ -13,5 +13,5 @@ export default {
   darkGray: '#414141',
   black: '#000',
   white: '#ffffff',
-  redError: "#D32F2F"
+  redError: '#D32F2F',
 };

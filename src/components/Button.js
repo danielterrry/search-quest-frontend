@@ -1,10 +1,13 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import Colors from '../Colors';
 
 const Button = styled.button`
-  background-color: ${({ variant }) => variant === "outline" ? Colors.white : Colors.primary};
-  color: ${({ variant }) => variant === "outline" ? Colors.primary : Colors.white};
-  border: ${({ variant }) => variant === "outline" ? `1px solid ${Colors.primary}` : "0"};
+  background-color: ${({ variant }) =>
+    variant === 'outline' ? Colors.white : Colors.primary};
+  color: ${({ variant }) =>
+    variant === 'outline' ? Colors.primary : Colors.white};
+  border: ${({ variant }) =>
+    variant === 'outline' ? `1px solid ${Colors.primary}` : '0'};
   height: 40px;
   border-radius: 8px;
   outline: 0;
@@ -16,7 +19,8 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: ${({ variant }) => variant === "outline" ? '#f1accf' : '#bc196a'};
+    background-color: ${({ variant }) =>
+      variant === 'outline' ? '#f1accf' : '#bc196a'};
     color: ${Colors.white};
   }
 

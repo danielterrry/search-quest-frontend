@@ -23,14 +23,15 @@ const Panel = styled.div`
 `;
 
 const Navigation = styled.nav`
-  div, ${Panel} {
+  div,
+  ${Panel} {
     transition: all 0.3s ease-in-out;
   }
 
   .menu {
     ${breakpoints.md} {
       display: none;
-    }  
+    }
   }
 
   &.active {
@@ -38,7 +39,7 @@ const Navigation = styled.nav`
       transform: translateX(${NAVIGATION_WIDTH});
     }
 
-  	${Panel} {
+    ${Panel} {
       z-index: 1000;
       visibility: visible;
       transform: translateX(0px);
@@ -49,21 +50,20 @@ const Navigation = styled.nav`
 const SideNavigation = ({ isActive, onClick }) => {
   return (
     <Navigation className={`${isActive ? 'active' : ''}`}>
-      <div className='menu' onClick={onClick}>
+      <div className="menu" onClick={onClick}>
         <MenuButton aria-label="Toggle menu" />
       </div>
       <Panel className="panel">
-        <div className="panel-header">
-          header
-        </div>
+        <div className="panel-header">header</div>
         <div className="panel-body">
-          <div class="nav-links">
+          <div className="nav-links">
+            <StyledNavLink to="/login">Login</StyledNavLink>
             <StyledNavLink to="/apply">Apply</StyledNavLink>
           </div>
         </div>
       </Panel>
     </Navigation>
   );
-}
+};
 
 export default SideNavigation;

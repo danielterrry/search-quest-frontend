@@ -1,7 +1,7 @@
-import ApplyForm from "./forms/ApplyForm";
+import ApplyForm from './forms/ApplyForm';
 
 const Apply = () => {
-    return <ApplyForm />
+  return <ApplyForm />;
 };
 
 export default Apply;

@@ -16,10 +16,18 @@ export const H2Typography = styled.h2`
   font-family: sora-semi-bold;
 `;
 
-export const TitleH1 = ({ className, children }) => {
-  return <H1Typography className={className}>{children}</H1Typography>;
+export const TitleH1 = ({ className, id, children }) => {
+  return (
+    <H1Typography className={className} id={id}>
+      {children}
+    </H1Typography>
+  );
 };
 
-export const TitleH2 = ({ className, children }) => {
-  return <H2Typography className={className}>{children}</H2Typography>;
+export const TitleH2 = ({ className, id, children }) => {
+  return (
+    <H2Typography className={className} id={id}>
+      {children}
+    </H2Typography>
+  );
 };

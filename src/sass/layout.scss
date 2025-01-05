@@ -7,7 +7,7 @@ body {
   align-items: center;
   height: 156px;
   padding: 0 24px 0 24px;
-  background-color: #FFF2FE;
+  background-color: #fff2fe;
 }
 
 .panel-body {
@@ -16,11 +16,11 @@ body {
   overflow-y: auto;
 }
 
-.nav-links>a {
-  color: #8E4C8E;
+.nav-links > a {
+  color: #8e4c8e;
 }
 
-.nav-links>a {
+.nav-links > a {
   display: block;
   text-decoration: none;
   margin: 16px 0;
@@ -35,4 +35,5 @@ body {
   border-radius: 0.25rem;
   background-color: #fff;
   box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  max-width: 500px;
 }

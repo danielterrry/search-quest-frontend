@@ -9,24 +9,27 @@ const data = [
   {
     id: 1,
     category: 'category 1',
-    colorScheme: "pink",
+    colorScheme: 'pink',
     title: 'Healthcare',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.'
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.',
   },
   {
     id: 2,
     category: 'category 2',
-    colorScheme: "blue",
+    colorScheme: 'blue',
     title: 'Education',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.'
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.',
   },
   {
     id: 3,
     category: 'category 3',
-    colorScheme: "purple",
+    colorScheme: 'purple',
     title: 'Technology',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.'
-  }
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.',
+  },
 ];
 
 const BannerHero = styled.div`
@@ -69,15 +72,19 @@ const Banner = () => {
     <>
       <BannerHero>
         <BannerContent>
-          <div className='lead'>
-            <H1Typography>
-              Let's get you connected
-            </H1Typography>
-            <H2Typography>Take the next step towards your perfect career</H2Typography>
+          <div className="lead">
+            <H1Typography>Let's get you connected</H1Typography>
+            <H2Typography>
+              Take the next step towards your perfect career
+            </H2Typography>
           </div>
-          <div className='categories'>
+          <div className="categories">
             {data.map((item) => (
-              <Pill id={item.id} colorScheme={item.colorScheme} text={item.title} onClick={() => console.log("clicked ", item.id)}
+              <Pill
+                id={item.id}
+                colorScheme={item.colorScheme}
+                text={item.title}
+                onClick={() => console.log('clicked ', item.id)}
               />
             ))}
           </div>
@@ -85,23 +92,31 @@ const Banner = () => {
       </BannerHero>
       <Latest>
         <H2Typography>Latest</H2Typography>
-        <div class="main">
+        <div className="main">
           {data.map((item) => (
-            <div class="four">
+            <div className="four">
               <CategoryCard key={item.id}>
-                <div style={{
-                  marginBottom: '16px',
-                }}>
-                  <Pill id={item.id} colorScheme={item.colorScheme} text={item.title} />
+                <div
+                  style={{
+                    marginBottom: '16px',
+                  }}
+                >
+                  <Pill
+                    id={item.id}
+                    colorScheme={item.colorScheme}
+                    text={item.title}
+                  />
                 </div>
-                <div style={{
-                  marginBottom: '16px'
-                }}>
-                  {
-                    item.description
-                  }
+                <div
+                  style={{
+                    marginBottom: '16px',
+                  }}
+                >
+                  {item.description}
                 </div>
-                <Button onClick={() => navigate('/apply')} variant="outline">Apply Now</Button>
+                <Button onClick={() => navigate('/apply')} variant="outline">
+                  Apply Now
+                </Button>
               </CategoryCard>
             </div>
           ))}

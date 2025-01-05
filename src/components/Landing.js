@@ -1,9 +1,7 @@
-import Banner from "./Banner";
+import Banner from './Banner';
 
 const Landing = () => {
-    return (
-        <Banner />
-    )
-}
+  return <Banner />;
+};
 
 export default Landing;
