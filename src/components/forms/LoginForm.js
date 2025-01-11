@@ -5,7 +5,6 @@ import FormGroupText from '../FormGroupText';
 import Button from '../Button';
 import { H2Typography } from '../Typography';
 import { useNavigate } from 'react-router-dom';
-import { login } from '../../api/auth';
 import { useAuth } from '../../contexts/AuthContext';
 
 const validationSchema = Yup.object({
@@ -19,23 +18,16 @@ const LoginForm = () => {
     password: '',
   };
 
-  const { setTokens, setProfile } = useAuth();
+  const { login } = useAuth();
   const navigate = useNavigate();
 
-  const onSubmit = async (values, { setSubmitting }) => {
-    try {
-      const loginUser = await login(values);
-      const { tokens, user } = loginUser;
+  const onSubmit = async (values, { setSubmitting, setErrors }) => {
+    const success = await login(values);
 
-      if (tokens.access.token) {
-        setProfile(user);
-        setTokens(tokens);
-        navigate('/dashboard');
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setSubmitting(false);
+    if (success === true) {
+      navigate('/dashboard');
+    } else {
+      setErrors({ email: success });
     }
   };
 

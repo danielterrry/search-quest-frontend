@@ -4,13 +4,14 @@ import * as Yup from 'yup';
 import FormGroupText from '../FormGroupText';
 import Button from '../Button';
 import { H2Typography } from '../Typography';
-import { register } from '../../api/auth';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 
 const validationSchema = Yup.object({
-  email: Yup.string().required('email is required'),
-  password: Yup.string().required('password is required'),
+  firstName: Yup.string().required('First name is required'),
+  lastName: Yup.string().required('Last name is required'),
+  email: Yup.string().required('Email is required'),
+  password: Yup.string().required('Password is required'),
 });
 
 const SignUpForm = () => {
@@ -21,19 +22,19 @@ const SignUpForm = () => {
     password: '',
   };
 
-  const { setTokens, setProfile } = useAuth();
+  const getFullName = (firstName, lastName) => `${firstName} ${lastName}`;
+
+  const { register } = useAuth();
   const navigate = useNavigate();
   const onSubmit = async (values, { setSubmitting }) => {
     try {
-      const registerUser = await register({
+      const fullName = getFullName(values.firstName, values.lastName);
+      const success = await register({
         ...values,
-        fullName: `${values.firstName} ${values.lastName}`,
+        fullName,
       });
-      const { tokens, user } = registerUser;
 
-      if (tokens.access.token) {
-        setProfile(user);
-        setTokens(tokens);
+      if (success === true) {
         navigate('/dashboard');
       }
     } catch (error) {
