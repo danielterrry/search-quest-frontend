@@ -22,17 +22,11 @@ const SignUpForm = () => {
     password: '',
   };
 
-  const getFullName = (firstName, lastName) => `${firstName} ${lastName}`;
-
   const { register } = useAuth();
   const navigate = useNavigate();
   const onSubmit = async (values, { setSubmitting }) => {
     try {
-      const fullName = getFullName(values.firstName, values.lastName);
-      const success = await register({
-        ...values,
-        fullName,
-      });
+      const success = await register(values);
 
       if (success === true) {
         navigate('/dashboard');

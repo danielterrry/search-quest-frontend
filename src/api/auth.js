@@ -1,33 +1,32 @@
 import apiClient from './apiClient';
 
 export default {
-  login: async (credentials) => {
+  login: async (payload) => {
     try {
-      const response = await apiClient.post('/auth/login', credentials);
+      const response = await apiClient.post('/auth/login', payload);
       return response.data;
     } catch (error) {
       console.error('login', error);
-      return {
-        message: error.response?.data?.message,
-        status: error.response?.data?.code,
-      };
+      return error.response;
     }
   },
 
-  logout: async (refreshToken) => {
+  logout: async (payload) => {
     try {
-      await apiClient.post('/auth/logout', refreshToken);
+      await apiClient.post('/auth/logout', payload);
     } catch (error) {
       console.error('logout', error);
+      return error.response;
     }
   },
 
-  register: async (profile) => {
+  register: async (payload) => {
     try {
-      const response = await apiClient.post('/auth/register', profile);
+      const response = await apiClient.post('/auth/register', payload);
       return response.data;
     } catch (error) {
       console.error('register', error);
+      return error.response;
     }
   },
 };

@@ -9,6 +9,7 @@ import Apply from './components/Apply';
 import LoginForm from './components/forms/LoginForm';
 import Dashboard from './components/Dashboard';
 import SignUpForm from './components/forms/SignUpForm';
+import Profile from './components/Profile';
 
 export const router = createBrowserRouter(
   createRoutesFromElements(
@@ -16,6 +17,7 @@ export const router = createBrowserRouter(
       <Route index element={<Landing />} />
       <Route path="apply" element={<Apply />} />
       <Route path="register" element={<SignUpForm />} />
+      <Route path="/profile" element={<Profile />} />
       <Route path="login" element={<LoginForm />} />
       <Route path="/dashboard" element={<Dashboard />} />
     </Route>,

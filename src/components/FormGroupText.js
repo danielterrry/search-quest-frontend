@@ -7,6 +7,7 @@ const FormGroupStyled = styled.div`
   display: flex;
   flex-direction: column;
   align-items: baseline;
+  width: 100%;
 `;
 
 export const TextInput = styled.input.attrs((props) => ({
