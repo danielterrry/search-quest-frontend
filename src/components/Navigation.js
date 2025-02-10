@@ -6,6 +6,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import SideNavigation from './SideNavigation';
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
+import LogoutButton from './LogoutButton';
 
 const Nav = styled.nav`
   display: flex;
@@ -45,8 +46,7 @@ export const StyledNavLink = styled(NavLink)`
 const Navigation = () => {
   const [isActive, setIsActive] = useState(false);
   const handleClick = () => setIsActive(!isActive);
-  const navigate = useNavigate();
-  const { logout, isAuthenticated, tokens } = useAuth();
+  const { isAuthenticated } = useAuth();
 
   return (
     <Nav className="container">
@@ -61,20 +61,7 @@ const Navigation = () => {
         <NavItem>
           {isAuthenticated ? (
             <>
-              <StyledNavLink
-                to="#"
-                onClick={async () => {
-                  const success = await logout({
-                    refreshToken: tokens.refresh.token,
-                  });
-
-                  if (success) {
-                    navigate('/');
-                  }
-                }}
-              >
-                Logout
-              </StyledNavLink>
+              <LogoutButton />
               <StyledNavLink to="/dashboard">Home</StyledNavLink>
               <StyledNavLink to="/profile">Profile</StyledNavLink>
             </>
