@@ -4,6 +4,8 @@ import MenuButton from './MenuButton';
 import { StyledNavLink } from './Navigation';
 import breakpoints from '../breakpoints';
 import Colors from '../Colors';
+import { useAuth } from '../contexts/AuthContext';
+import NavLinks from './NavLinks';
 
 const NAVIGATION_WIDTH = '290px';
 
@@ -48,6 +50,8 @@ const Navigation = styled.nav`
 `;
 
 const SideNavigation = ({ isActive, onClick }) => {
+  const { isAuthenticated } = useAuth();
+
   return (
     <Navigation className={`${isActive ? 'active' : ''}`}>
       <div className="menu" onClick={onClick}>
@@ -57,8 +61,7 @@ const SideNavigation = ({ isActive, onClick }) => {
         <div className="panel-header">header</div>
         <div className="panel-body">
           <div className="nav-links">
-            <StyledNavLink to="/login">Login</StyledNavLink>
-            <StyledNavLink to="/apply">Apply</StyledNavLink>
+            <NavLinks isAuthenticated={isAuthenticated} />
           </div>
         </div>
       </Panel>

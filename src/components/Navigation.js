@@ -7,6 +7,7 @@ import SideNavigation from './SideNavigation';
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import LogoutButton from './LogoutButton';
+import NavLinks from './NavLinks';
 
 const Nav = styled.nav`
   display: flex;
@@ -25,7 +26,7 @@ export const NavItems = styled.ul`
   }
 `;
 
-const NavItem = styled.li`
+const NavList = styled.li`
   display: block;
 `;
 
@@ -58,18 +59,9 @@ const Navigation = () => {
         <Logo />
       </a>
       <NavItems className="nav-items" role="menu">
-        <NavItem>
-          {isAuthenticated ? (
-            <>
-              <StyledNavLink to="/dashboard">Home</StyledNavLink>
-              <StyledNavLink to="/profile">Profile</StyledNavLink>
-            </>
-          ) : (
-            <StyledNavLink to="/login">Login</StyledNavLink>
-          )}
-          <StyledNavLink to="/apply">Apply</StyledNavLink>
-        </NavItem>
-        {isAuthenticated && <LogoutButton />}
+        <NavList>
+          <NavLinks isAuthenticated={isAuthenticated} />
+        </NavList>
       </NavItems>
     </Nav>
   );
