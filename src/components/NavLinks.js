@@ -3,7 +3,7 @@ import { StyledNavLink } from './Navigation';
 
 const NavLinks = ({ isAuthenticated }) => {
   return (
-    <div>
+    <>
       {isAuthenticated ? (
         <>
           <StyledNavLink to="/dashboard">Home</StyledNavLink>
@@ -14,7 +14,7 @@ const NavLinks = ({ isAuthenticated }) => {
       )}
       <StyledNavLink to="/apply">Apply</StyledNavLink>
       {isAuthenticated && <LogoutButton />}
-    </div>
+    </>
   );
 };
 
