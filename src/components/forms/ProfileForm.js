@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import FormGroupText from '../FormGroupText';
 import Button from '../Button';
-import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts/AuthContext';
 import Spinner from '../Spinner';
 import { H2Typography } from '../Typography';
@@ -13,7 +12,7 @@ const validationSchema = Yup.object({
   lastName: Yup.string().required('Last name is required'),
 });
 
-const ProfileForm = () => {
+const ProfileForm = ({ isEdit, onEdit }) => {
   const { profile, update, isLoading } = useAuth();
 
   const initialValues = {
@@ -21,7 +20,6 @@ const ProfileForm = () => {
     lastName: profile.lastName,
   };
 
-  const navigate = useNavigate();
   const onSubmit = async (values, { setSubmitting }) => {
     try {
       const success = await update({
@@ -31,6 +29,7 @@ const ProfileForm = () => {
       });
 
       if (success) {
+        onEdit(false);
         console.log('completed');
       }
     } catch (error) {
@@ -64,9 +63,22 @@ const ProfileForm = () => {
                 id="lastName"
                 name="lastName"
               />
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? 'Submitting...' : 'Submit'}
-              </Button>
+              <div style={{ display: 'flex', gap: '6px' }}>
+                <Button type="submit" disabled={isSubmitting}>
+                  {isSubmitting ? 'Submitting...' : 'Submit'}
+                </Button>
+                {isEdit && !isSubmitting ? (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => {
+                      onEdit(!isEdit);
+                    }}
+                  >
+                    Cancel
+                  </Button>
+                ) : null}
+              </div>
             </Form>
           </>
         )}

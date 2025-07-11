@@ -54,7 +54,11 @@ const LoginForm = () => {
             <Button type="submit" disabled={isSubmitting}>
               {isSubmitting ? 'Submitting...' : 'Sign in'}
             </Button>
-            <Button type="button" onClick={() => navigate('/register')}>
+            <Button
+              variant="outline"
+              type="button"
+              onClick={() => navigate('/register')}
+            >
               Register
             </Button>
           </Form>

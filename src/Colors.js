@@ -1,5 +1,5 @@
 export default {
-  primary: '#CA009B',
+  primary: '#ad8fff',
   secondary: '#9C75E1',
   pink: '#fef3f1',
   blue: '#edf7fb',
@@ -11,6 +11,7 @@ export default {
   darkPurple: '#8a4c95',
   lightCream: '#fcfbe7',
   darkGray: '#414141',
+  lightGray: '#e4e4e7',
   black: '#000',
   white: '#ffffff',
   redError: '#D32F2F',

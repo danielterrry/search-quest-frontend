@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import user from '../api/user';
-import { H2Typography } from './Typography';
+import { useAuth } from '../contexts/AuthContext';
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1.25rem;
 `;
 
 const UserList = styled.ul`
@@ -28,6 +27,7 @@ const ErrorMessage = styled.p`
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(null);
+  const { profile } = useAuth();
 
   useEffect(() => {
     const getUsers = async () => {
@@ -38,7 +38,7 @@ const Users = () => {
         return;
       }
 
-      setUsers(response.data);
+      setUsers(response.results.filter((x) => x.id != profile.id));
     };
 
     getUsers();
@@ -46,13 +46,15 @@ const Users = () => {
 
   return (
     <Container>
-      <H2Typography>Users</H2Typography>
       {error ? (
         <ErrorMessage>{error}</ErrorMessage>
       ) : (
         <UserList>
           {users.map((user) => (
-            <UserItem key={user.id}>{user.firstName}</UserItem>
+            <div key={user.id} style={{ display: 'flex' }}>
+              <UserItem>{user.firstName}</UserItem>
+              <UserItem>{user.lastName}</UserItem>
+            </div>
           ))}
         </UserList>
       )}

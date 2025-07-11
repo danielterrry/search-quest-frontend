@@ -8,7 +8,7 @@ const Container = styled.div`
   align-items: flex-start;
   min-height: 218px;
   position: relative;
-  border: 1px solid ${Colors.darkGray};
+  border: 1px solid ${Colors.lightGray};
   width: auto;
   padding: 1rem;
   border-radius: 16px;

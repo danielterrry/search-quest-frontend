@@ -4,6 +4,7 @@ import Pill from './Pill';
 import CategoryCard from '../components/CategoryCard';
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
+import GetStartedForm from './forms/GetStartedForm';
 
 const data = [
   {
@@ -33,13 +34,14 @@ const data = [
 ];
 
 const BannerHero = styled.div`
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem;
   display: flex;
   z-index: 1;
   position: relative;
   flex-direction: column;
   justify-content: center;
+  background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%);
+  border-radius: 16px;
 
   .categories {
     display: flex;
@@ -49,13 +51,15 @@ const BannerHero = styled.div`
 
 const BannerContent = styled.div`
   margin: auto;
-  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 
   .lead {
     margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
@@ -63,6 +67,7 @@ const Latest = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 1rem;
 `;
 
 const Banner = () => {
@@ -77,6 +82,7 @@ const Banner = () => {
             <H2Typography>
               Take the next step towards your perfect career
             </H2Typography>
+            <GetStartedForm />
           </div>
           <div className="categories">
             {data.map((item) => (
@@ -92,9 +98,9 @@ const Banner = () => {
       </BannerHero>
       <Latest>
         <H2Typography>Latest</H2Typography>
-        <div className="main">
+        <div className="grid">
           {data.map((item) => (
-            <div className="four">
+            <div className="col-sm-6 col-lg-4">
               <CategoryCard key={item.id}>
                 <div
                   style={{

@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import Button from './Button';
+import { ReactComponent as LogoutIcon } from '../assets/icons/logout.svg';
+import IconButton from './IconButton';
 
 const LogoutButton = () => {
   const { logout, tokens } = useAuth();
@@ -16,7 +17,11 @@ const LogoutButton = () => {
     }
   };
 
-  return <Button onClick={handleLogout}>Logout</Button>;
+  return (
+    <IconButton onClick={handleLogout}>
+      <LogoutIcon />
+    </IconButton>
+  );
 };
 
 export default LogoutButton;

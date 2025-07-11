@@ -20,13 +20,15 @@ const Button = styled.button`
 
   &:hover {
     background-color: ${({ variant }) =>
-      variant === 'outline' ? '#f1accf' : '#bc196a'};
+      variant === 'outline' ? '#ad8fff' : '#9e84e6'};
     color: ${Colors.white};
   }
 
   &:disabled {
-    cursor: default;
-    opacity: 0.7;
+    background-color: #f6f6f6;
+    color: #9ca0a6;
+    border: 1px solid #f6f6f6;
+    cursor: not-allowed;
   }
 `;
 

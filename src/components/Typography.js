@@ -1,19 +1,15 @@
 import { styled } from 'styled-components';
 
 export const H1Typography = styled.h1`
-  font-size: 3rem;
-  line-height: 3.75rem;
+  font-size: 2rem;
+  line-height: 1.3;
   margin-bottom: 1rem;
-  text-align: center;
-  font-family: sora-semi-bold;
 `;
 
 export const H2Typography = styled.h2`
-  font-size: 2rem;
-  line-height: 2.5rem;
+  font-size: 1.5rem;
+  line-height: 1.5;
   margin-bottom: 1rem;
-  text-align: center;
-  font-family: sora-semi-bold;
 `;
 
 export const TitleH1 = ({ className, id, children }) => {

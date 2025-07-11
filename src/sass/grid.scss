@@ -1,7 +1,7 @@
-.main {
+.grid {
   display: grid;
   grid-gap: 24px;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   margin: 0 auto;
   width: 100%;
   max-width: 1200px;
@@ -15,25 +15,58 @@
   padding-right: 16px;
 }
 
-.one,
-.two,
-.three,
-.four,
-.five,
-.six,
-.seven,
-.eight,
-.nine,
-.ten,
-.eleven,
-.twelve {
+.col-sm-1 {
+  grid-column-end: span 1;
+}
+
+.col-sm-2 {
+  grid-column-end: span 2;
+}
+
+.col-sm-3 {
+  grid-column-end: span 3;
+}
+
+.col-sm-4 {
+  grid-column-end: span 4;
+}
+
+.col-sm-5 {
+  grid-column-end: span 5;
+}
+
+.col-sm-6 {
+  grid-column-end: span 6;
+}
+
+.col-sm-7 {
+  grid-column-end: span 7;
+}
+
+.col-sm-8 {
+  grid-column-end: span 8;
+}
+
+.col-sm-9 {
+  grid-column-end: span 9;
+}
+
+.col-sm-10 {
+  grid-column-end: span 10;
+}
+
+.col-sm-11 {
+  grid-column-end: span 11;
+}
+
+.col-sm-12 {
   grid-column-end: span 12;
 }
 
 .nested {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(12, 1fsr);
 }
 
 .merge-two-rows {
@@ -57,47 +90,59 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .one {
+  .grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  .col-lg-1 {
     grid-column-end: span 1;
   }
 
-  .two {
+  .col-lg-2 {
     grid-column-end: span 2;
   }
 
-  .three {
+  .col-lg-3 {
     grid-column-end: span 3;
   }
 
-  .four {
+  .col-lg-4 {
     grid-column-end: span 4;
   }
 
-  .five {
+  .col-lg-5 {
     grid-column-end: span 5;
   }
 
-  .six {
+  .col-lg-6 {
     grid-column-end: span 6;
   }
 
-  .seven {
+  .col-lg-7 {
     grid-column-end: span 7;
   }
 
-  .eight {
+  .col-lg-8 {
     grid-column-end: span 8;
   }
 
-  .nine {
+  .col-lg-9 {
     grid-column-end: span 9;
   }
 
-  .ten {
+  .col-lg-10 {
     grid-column-end: span 10;
   }
 
-  .eleven {
+  .col-lg-11 {
     grid-column-end: span 11;
   }
+
+  .col-lg-12 {
+    grid-column-end: span 12;
+  }
+}
+
+.col-full {
+  grid-column: 1 / -1;
 }

@@ -15,16 +15,18 @@ export const TextInput = styled.input.attrs((props) => ({
   size: props.size || '1rem',
 }))`
   &:focus {
-    box-shadow: 0 0 5px ${Colors.primary};
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+    box-shadow: 0 0 0 1px ${Colors.primary};
     border-color: ${Colors.primary};
   }
 
   outline: none;
-  border: 2px solid ${Colors.darkGray};
+  border: 1px solid ${Colors.lightGray};
   width: 100%;
   padding: 12px 10px;
   border-radius: 4px;
-  font-size: 15px;
+  height: 40px;
 `;
 
 export const FormLabel = styled.label`
@@ -33,16 +35,28 @@ export const FormLabel = styled.label`
   margin-bottom: 8px;
 `;
 
-const FormGroupText = ({ label, type, id, placeholder, name }) => (
+const FormGroupText = ({
+  label,
+  type,
+  id,
+  placeholder,
+  name,
+  autoComplete,
+  onClick,
+  children,
+}) => (
   <FormGroupStyled style={{ marginBottom: '1rem' }}>
-    <FormLabel for={id}>{label}</FormLabel>
+    {label ? <FormLabel for={id}>{label}</FormLabel> : null}
     <Field
       id={id}
       type={type}
       placeholder={placeholder}
       name={name}
       as={TextInput}
+      autocomplete={autoComplete}
+      onClick={onClick}
     />
+    {children && children}
     <ErrorMessage
       style={{
         color: Colors.redError,

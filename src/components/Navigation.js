@@ -2,7 +2,7 @@ import { styled } from 'styled-components';
 import Colors from '../Colors';
 import breakpoints from '../breakpoints';
 import { ReactComponent as Logo } from '../assets/logo.svg';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import SideNavigation from './SideNavigation';
 import { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
@@ -61,7 +61,6 @@ const Navigation = () => {
         <NavItem>
           {isAuthenticated ? (
             <>
-              <LogoutButton />
               <StyledNavLink to="/dashboard">Home</StyledNavLink>
               <StyledNavLink to="/profile">Profile</StyledNavLink>
             </>
@@ -70,6 +69,7 @@ const Navigation = () => {
           )}
           <StyledNavLink to="/apply">Apply</StyledNavLink>
         </NavItem>
+        {isAuthenticated && <LogoutButton />}
       </NavItems>
     </Nav>
   );

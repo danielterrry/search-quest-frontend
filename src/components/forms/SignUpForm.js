@@ -58,11 +58,13 @@ const SignUpForm = () => {
             type="text"
             id="lastName"
             name="lastName"
+            autoComplete="off"
           />
           <FormGroupText label="Email" type="email" id="email" name="email" />
           <FormGroupText
             label="Password"
             type="password"
+            autoComplete="new-password"
             id="password"
             name="password"
           />
